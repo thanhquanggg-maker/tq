@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Quang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<!-- Chat Button -->
+<div id="chat-toggle" onclick="toggleChat()">
+    💬
+</div>
+
+
+<body>
+    <div id="galaxy-event">
+        <div id="galaxy-text"></div>
+    </div>
+
+    <button id="topBtn" onclick="scrollToTop()">
+        ⬆
+    </button>
+    <div id="loader">
+        <div class="loader-content">
+            <h1>Thanh Quang</h1>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
+    <div id="tsparticles"></div>
+    <!-- Chat Box -->
+    <div id="chat-container">
+        <div class="chat-header">
+            Hỏi đi
+            <span onclick="toggleChat()">✖</span>
+        </div>
+
+        <div id="chat-messages">
+            <div class="bot-message">
+                Xin chào 👋 Tôi là trợ lý của Thanh Quang.
+            </div>
+            <div class="quick-questions">
+                <button onclick="askBot('Bạn là ai?')">👤 Bạn là ai?</button>
+
+                <button onclick="askBot('Kỹ năng')">💻 Kỹ năng</button>
+
+                <button onclick="askBot('Dự án')">🚀 Dự án</button>
+
+                <button onclick="askBot('Liên hệ')">📞 Liên hệ</button>
+
+                <button onclick="askBot('Discord')">🎮 Discord</button>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Nhập tin nhắn..." onkeypress="handleKey(event)">
+
+            <button onclick="sendMessage()">➤</button>
+        </div>
+
+    </div>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="video/output.webm" type="video/webm">
+        <source src="video/output.mp4" type="video/mp4">
+    </video>
+    <audio id="bg-music" loop>
+        <source src="video/audio.mp3" type="audio/mp3">
+    </audio>
+
+    <nav class="navbar">
+
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <div class="content">
+            <div class="profile-card">
+                <img src="image/avatar.jpg" alt="Avatar" class="avatar">
+                <p class="status">
+                    🟢 Online
+                </p>
+                <h2>Thanh Quang</h2>
+                <p id="typing"></p>
+                <button id="music-btn" onclick="toggleMusic()">
+                    🎵 Play Music
+                </button>
+                <p>🎮 PUBG | Minecraft | Arena of valor</p>
+                <div id="clock"></div>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/thanhquang2408" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a href="https://discord.com/users/_24th08_" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+
+                    <a href="https://tiktok.com/@_thanhquang16" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_thqng/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+
+                <div id="quote-box">
+                    <p id="quote"></p>
+                </div>
+
+                <div class="music-disc">
+                    <img src="image/avatar.jpg" alt="Music Disc">
+                    <div class="disc-center"></div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h1>🚀 Projects</h1>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <span class="icon">🎵</span>
+                <h2>Discord Music Bot</h2>
+                <p>Bot phát nhạc Discord với queue, playlist và slash commands.</p>
+                <a href="https://discord.gg/jfR7dzaJT" class="btn">View Project</a>
+            </div>
+
+            <div class="project-card">
+                <span class="icon">🌐</span>
+                <h2>Personal Website</h2>
+                <p>Website portfolio cá nhân được xây dựng bằng HTML, CSS và JS.</p>
+                <a href="https://thanhquanggg-maker.github.io/Travelvn/" class="btn">Visit Site</a>
+            </div>
+
+            <div class="project-card">
+                <span class="icon">⛏️</span>
+                <h2>Minecraft Server</h2>
+                <p>Server SMP dành cho bạn bè với plugin và hệ thống rank.</p>
+                <a href="#" class="btn">More Info</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2>🖼 Gallery</h2>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="image/discord.png" alt="Discord Bot">
+                <div class="overlay">Discord Bot</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/travel.png" alt="Website">
+                <div class="overlay">Personal Website</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="image/minecraft.png" alt="Minecraft">
+                <div class="overlay">Minecraft Server</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>📞 Contact Me</h2>
+        <p>Interested in working together? Feel free to reach out!</p>
+
+        <div class="contact-links">
+            <a href="#">📧 Email: quangnot1@gmail.com</a>
+            <a href="https://github.com/thanhquanggg-maker" target="_blank">💻 GitHub</a>
+            <a href="https://discord.com/users/_24th08_">🎮 Discord: _24th08_</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Thanh Quang</h3>
+            <p>💻 Web Developer | 🎮 Gamer | 🎵 Music Lover</p>
+
+            <div class="footer-social">
+
+                <a href="https://www.facebook.com/thanhquang2408" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://discord.com/users/_24th08_" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+
+                <a href="https://github.com/thanhquanggg-maker" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <a href="https://www.instagram.com/_thqng/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <p class="copyright">
+                © 2026 Thanh Quang. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+
+</html>
